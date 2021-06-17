@@ -1,10 +1,10 @@
 <div class="user-form-wrapper">
-  <form matStretch fxLayout="column">
+  <form matStretch fxLayout="column" [formGroup]="formGroup" (ngSubmit)="signin()">
     <mat-form-field>
-      <input matInput placeholder="E-mail" >
+      <input matInput placeholder="E-mail" formControlName="email" >
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Senha" >
+      <input matInput placeholder="Senha" type="password" formControlName="password" >
     </mat-form-field><br>
     <button mat-raised-button color="primary" type="submit">Login</button>
   </form>
