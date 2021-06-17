@@ -10,6 +10,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     AppRoutingModule,
     FlexLayoutModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
