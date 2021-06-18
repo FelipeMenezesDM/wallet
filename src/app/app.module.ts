@@ -18,14 +18,15 @@ import { NgxMaskModule } from  'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
-
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +46,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     OverlayModule
   ],
   providers: [],
+  exports: [DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

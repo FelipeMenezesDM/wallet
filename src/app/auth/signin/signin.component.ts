@@ -29,13 +29,29 @@ export class SigninComponent implements OnInit {
   signin() {
     if(this.formGroup.valid) {
       this.preloader.$spin.next(true);
-      this.authRequestService.executeService(this.formGroup.value, "POST", "signin").subscribe(result => {
-        
-      }, error => {
-        this.dialog.open();
-      }, () => {
-        this.preloader.$spin.next(false);
-      });
+      this.authRequestService.executeService(this.formGroup.value, "POST", "signin").subscribe(
+        result => {
+          this.preloader.$spin.next(false);
+
+          if(result.status !== "succces") {
+            this.dialog.open({
+              type: "error",
+              title: "Erro",
+              message: result.message
+            });
+          }else{
+            
+          }
+        },
+        error => {
+          this.preloader.$spin.next(false);
+          this.dialog.open({
+            type: "error",
+            title: "Erro",
+            message: "Não foi possível realizar o login. Por favor, entre em contato com o administrador do sistema."
+          });
+        }
+      );
     }
   }
 }

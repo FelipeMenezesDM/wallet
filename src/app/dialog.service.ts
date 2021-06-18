@@ -9,11 +9,14 @@ export class DialogService {
 
   constructor(private dialog: MatDialog) { }
 
-  open() {
+  open(setts) {
     const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = '400px';
+    dialogConfig.data = {
+      title: setts.title,
+      message: setts.message
+    };
 
     this.dialog.open(DialogComponent, dialogConfig);
   }
