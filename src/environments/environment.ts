@@ -6,10 +6,6 @@ export const environment = {
   production: false
 };
 
-export const baseUrl = 'http://localhost:8080/wallet-backend/index.php/api/v1.0/';
-export const clientId = '0oa10vhghjNgDERxN5d7';
-export const clientSecret = 'Xd1wAwcaG-mtrTntmsi1UUHCfo7IiSiyD0QLVpk0';
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

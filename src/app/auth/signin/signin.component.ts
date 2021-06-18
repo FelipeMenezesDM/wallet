@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthRequestService } from 'src/app/auth.request.service';
+import { PreloaderService } from 'src/app/preloader.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,8 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private authRequestService:AuthRequestService
+    private authRequestService:AuthRequestService,
+    private preloader: PreloaderService
   ) { }
 
   ngOnInit(): void {
@@ -19,17 +21,14 @@ export class SigninComponent implements OnInit {
 
   formGroup: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]]
+    password: ['', [Validators.required]]
   })
 
   signin() {
     if(this.formGroup.valid) {
-      this.authRequestService.execute(this.formGroup.value, "POST", "signin").subscribe(result => {
-        if(result.status === "success") {
-
-        }else{
-          
-        }
+      this.preloader.$spin.next(true);
+      this.authRequestService.executeService(this.formGroup.value, "POST", "signin").subscribe(result => {
+        this.preloader.$spin.next(false);
       });
     }
   }
