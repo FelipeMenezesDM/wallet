@@ -12,11 +12,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxMaskModule } from  'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OverlayModule } from '@angular/cdk/overlay'
+import { OverlayModule } from '@angular/cdk/overlay';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { OverlayModule } from '@angular/cdk/overlay'
     MatTabsModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     NgxMaskModule.forRoot(),
     HttpClientModule,

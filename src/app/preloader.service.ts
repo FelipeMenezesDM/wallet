@@ -3,7 +3,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { Subject } from 'rxjs';
-import { scan, map, mergeMap } from 'rxjs/operators'
+import { scan, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
