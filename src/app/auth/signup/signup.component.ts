@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthRequestService } from 'src/app/auth.request.service';
-import { DialogService } from 'src/app/dialog.service';
-import { PreloaderService } from 'src/app/preloader.service';
+import { AuthRequestService } from 'src/app/services/auth.request.service';
+import { DialogService } from 'src/app/services/dialog.service';
+import { PreloaderService } from 'src/app/services/preloader.service';
 
 @Component({
   selector: 'app-signup',

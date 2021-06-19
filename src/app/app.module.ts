@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
@@ -29,6 +30,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     SigninComponent,
     SignupComponent,
     DialogComponent,
+    ModalComponent,
     DashboardComponent
   ],
   imports: [
@@ -50,7 +52,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatAutocompleteModule
   ],
   providers: [],
-  exports: [DialogComponent],
+  exports: [DialogComponent, ModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

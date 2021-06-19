@@ -1,9 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
-import { AuthRequestService } from '../auth.request.service';
-import { PreloaderService } from '../preloader.service';
-import { DialogService } from '../dialog.service';
+import { AuthRequestService } from '../services/auth.request.service';
+import { PreloaderService } from '../services/preloader.service';
+import { DialogService } from '../services/dialog.service';
 
 @Component({
   selector: 'app-dashboard',
