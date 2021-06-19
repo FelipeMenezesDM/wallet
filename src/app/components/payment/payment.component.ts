@@ -6,6 +6,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { DialogService } from 'src/app/services/dialog.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,8 +16,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 export class PaymentComponent implements OnInit {
   title: string;
   name: string;
-  saldoAtual: number = 0;
-  id: string;
+  saldoAtual: string = "-";
 
   constructor(
     private fb: FormBuilder,
@@ -24,29 +24,39 @@ export class PaymentComponent implements OnInit {
     private preloader: PreloaderService,
     private authRequestService: AuthRequestService,
     private dialog: DialogService,
+    private user: UserService,
     @Inject(MAT_DIALOG_DATA) data
   ) { 
     this.title = data.title;
     this.name = data.name;
-    this.id = data.id;
+    this.formGroup.get('payee')!.setValue(data.id);
+    this.formGroup.get('payer')?.setValue(user.getInfo().person_id);
+
+    this.authRequestService.executeService({}, "POST", "payer", "get").subscribe(result => {
+      if(result.status === "success") {
+        this.saldoAtual = result.results.saldoAtualComMascara;
+      }
+    });
   }
 
   ngOnInit(): void {
   }
 
   formGroup: FormGroup = this.fb.group({
-    value: ['', [Validators.required]]
+    value: ['', [Validators.required]],
+    payee: [''],
+    payer: ['']
   })
 
   confirmPay() {
     if(this.formGroup.valid) {
       this.dialogRef.close();
       this.preloader.$spin.next(true);
-      this.authRequestService.executeService(this.formGroup.value, "POST", "signin").subscribe(result => {
+      this.authRequestService.executeService(this.formGroup.value, "POST", "payment", "validatePayment").subscribe(result => {
         let title = "Erro";
 
         if( result.status === "success" ) {
-          title = "Pagamemto realizado.";
+          title = "Pagamento realizado";
         }
 
         this.dialog.open({

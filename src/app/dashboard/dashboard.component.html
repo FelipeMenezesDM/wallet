@@ -2,8 +2,8 @@
   <mat-card fxFlex="22" class="user-page-card" fxFlexFill fxLayout="column">
     <div align="center">
       <div class="dash-title">
-        <h3>Nome do usuário</h3>
-        <h4>Logista</h4>
+        <h2>{{ user.fullname }}</h2>
+        <h4>{{ user.type == 'J' ? 'Logista' : 'Padrão' }}</h4>
       </div>
       <button mat-mini-fab color="primary" style="width : 6em;height: 6em;" (click)="btnClick()">Transferir</button>
     </div>

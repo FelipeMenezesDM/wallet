@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../services/modal.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  user: any;
+
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private helper: UserService
+  ) {
+    if(!this.helper.isLoggedIn()) {
+      this.router.navigate(['/user']);
+    }
+
+    this.user = this.helper.getInfo();
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { PreloaderService } from 'src/app/services/preloader.service';
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private authRequestService: AuthRequestService,
     private preloader: PreloaderService,
-    private dialog: DialogService
+    private dialog: DialogService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class SignupComponent implements OnInit {
   signup() {
     if(this.formGroup.valid) {
       this.preloader.$spin.next(true);
-      this.authRequestService.executeService(this.formGroup.value, "POST", "signup").subscribe(
+      this.authRequestService.executeService(this.formGroup.value, "POST", "signup", "register").subscribe(
         result => {
           this.preloader.$spin.next(false);
 
@@ -43,7 +45,7 @@ export class SignupComponent implements OnInit {
               message: result.message
             });
           }else{
-
+            this.router.navigate(['/']);
           }
         },
         error => {

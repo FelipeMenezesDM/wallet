@@ -5,6 +5,7 @@ import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { PreloaderService } from 'src/app/services/preloader.service';
 import { EventEmitter } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -19,8 +20,13 @@ export class SigninComponent implements OnInit {
     private authRequestService: AuthRequestService,
     private preloader: PreloaderService,
     private dialog: DialogService,
-    private router:Router
-  ) { }
+    private router:Router,
+    private user: UserService
+  ) { 
+    if( this.user.isLoggedIn() ) {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -33,7 +39,7 @@ export class SigninComponent implements OnInit {
   signin() {
     if(this.formGroup.valid) {
       this.preloader.$spin.next(true);
-      this.authRequestService.executeService(this.formGroup.value, "POST", "signin").subscribe(
+      this.authRequestService.executeService(this.formGroup.value, "POST", "signin", "checkLogin").subscribe(
         result => {
           this.preloader.$spin.next(false);
 
@@ -44,7 +50,7 @@ export class SigninComponent implements OnInit {
               message: result.message
             });
           }else{
-            this.setToken(result.results);
+            this.user.setToken(result.results);
             this.getLoggedInName.emit(true);
             this.router.navigate(['/']);
           }
@@ -59,25 +65,5 @@ export class SigninComponent implements OnInit {
         }
       );
     }
-  }
-
-  setToken(token: string) {
-    localStorage.setItem('token', token);
-  }
-  
-  getToken() {
-    return localStorage.getItem('token');
-  }
-    
-  deleteToken() {
-    localStorage.removeItem('token');
-  }
-  
-  isLoggedIn() {
-    const usertoken = this.getToken();
-    if (usertoken != null) {
-      return true
-    }
-    return false;
   }
 }

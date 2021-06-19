@@ -9,13 +9,13 @@ import { PaymentComponent } from '../../payment/payment.component';
   styleUrls: ['./list-payee.component.css']
 })
 export class ListPayeeComponent implements OnInit {
-  data = [{person_id: null, fullname: null}];
+  data: any;
 
   constructor(
     private authRequestService: AuthRequestService,
     private modalService: ModalService
   ) { 
-    this.authRequestService.executeService({}, "POST", "payee").subscribe(result => {
+    this.authRequestService.executeService({}, "POST", "payee", "getPayees").subscribe(result => {
       if(result.status === "success") {
         this.data = result.results;
       }
@@ -26,6 +26,6 @@ export class ListPayeeComponent implements OnInit {
   }
 
   pay( person_id, fullname ) {
-    this.modalService.open(PaymentComponent, {title: `Novo pagamento para ${fullname}`});
+    this.modalService.open(PaymentComponent, {title: `Novo pagamento para ${fullname}`, id: person_id});
   }
 }
