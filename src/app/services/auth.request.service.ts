@@ -18,11 +18,6 @@ export class AuthRequestService {
 
     return this.http.request(method, `${baseUrl}service/${object}`, {body: httpParams});
   }
-
-  getUsersAutocomplete(fullname: string, object: string): Observable<string[]> {
-    return this.http.get<UsersAC[]>(`${baseUrl}/autocomplete/${object}?client_id=${clientId}&client_secret=${clientSecret}`)
-                    .pipe(map(list => list.map(({ fullname }) => fullname )));
-  }
 }
 
 interface UsersAC {

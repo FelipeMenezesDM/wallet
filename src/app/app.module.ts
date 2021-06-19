@@ -22,6 +22,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatListModule } from '@angular/material/list';
+import { ListPayeeComponent } from './components/listas/list-payee/list-payee.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     SignupComponent,
     DialogComponent,
     ModalComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListPayeeComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     OverlayModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatListModule
   ],
   providers: [],
   exports: [DialogComponent, ModalComponent],

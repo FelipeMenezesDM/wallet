@@ -1,9 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EventEmitter } from '@angular/core';
-import { AuthRequestService } from '../services/auth.request.service';
-import { PreloaderService } from '../services/preloader.service';
-import { DialogService } from '../services/dialog.service';
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,20 +8,14 @@ import { DialogService } from '../services/dialog.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-
   constructor(
-    private fb: FormBuilder,
-    private authRequestService: AuthRequestService,
-    private preloader: PreloaderService,
-    private dialog: DialogService,
+    private router: Router
   ) { }
 
-  formGroup: FormGroup = this.fb.group({
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
-  })
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
+
+  btnClick() {
+    this.router.navigateByUrl('/pay');
+  };
 }
