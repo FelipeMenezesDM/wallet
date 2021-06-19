@@ -1,0 +1,10 @@
+<div fxLayoutAlign="center top">
+    <mat-card fxFlex="22" class="user-page-card" fxFlexFill fxLayout="column">
+        <h3>Clique no item para <br>fazer um pagamento</h3>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option *ngFor="let item of data" [value]="item.person_id" (click)="pay(item.person_id, item.fullname)">
+            {{item.fullname}}
+          </mat-list-option>
+        </mat-selection-list>
+    </mat-card>
+</div>
