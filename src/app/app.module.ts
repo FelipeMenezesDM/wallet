@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     AuthComponent,
     SigninComponent,
     SignupComponent,
-    DialogComponent
+    DialogComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    OverlayModule
+    OverlayModule,
+    MatAutocompleteModule
   ],
   providers: [],
   exports: [DialogComponent],

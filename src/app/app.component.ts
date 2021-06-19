@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthRequestService } from './auth.request.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Wallet';
+
+  constructor(private dataService: AuthRequestService) {
+    //dataService.getLoggedInName.subscribe(name => this.changeName(name));
+  }
 }

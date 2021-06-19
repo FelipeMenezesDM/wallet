@@ -1,8 +1,8 @@
 <div class="user-form-wrapper">
-  <form matStretch fxLayout="column" [formGroup]="formGroup" (ngSubmit)="signin()">
+  <form [formGroup]="formGroup" (ngSubmit)="signin()">
     <mat-form-field>
-      <input matInput placeholder="E-mail" type="email" formControlName="email" >
-      <mat-error *ngIf="!formGroup.controls['email'].valid">Informe um endereço de e-mail válido.</mat-error>
+      <input matInput placeholder="E-mail ou nome de usuário" formControlName="email" >
+      <mat-error *ngIf="!formGroup.controls['email'].valid">Informe um endereço de e-mail ou nome de usuário válido.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Senha" type="password" formControlName="password" >

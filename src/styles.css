@@ -9,7 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .user-form-wrapper {
-	padding: 30px;
+	padding: 40px;
 }
 
 .user-form-wrapper mat-form-field {

@@ -1,16 +1,24 @@
 <div class="user-form-wrapper">
-  <form>
+  <form [formGroup]="formGroup" (ngSubmit)="signup()">
     <mat-form-field>
-      <input matInput placeholder="Nome completo" >
+      <input matInput placeholder="Nome completo" formControlName="fullname">
+      <mat-error *ngIf="!formGroup.controls['fullname'].valid">Você deve informar o nome de usuário.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="CPF/CNPJ" mask="CPF_CNPJ" >
+      <input matInput placeholder="CPF/CNPJ" mask="CPF_CNPJ" formControlName="cpf_cnpj" >
+      <mat-error *ngIf="!formGroup.controls['cpf_cnpj'].valid">Você deve informar um CPF ou um CNPJ.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="E-mail" >
+      <input matInput placeholder="E-mail" formControlName="email" >
+      <mat-error *ngIf="!formGroup.controls['email'].valid">Você deve informar um e-mail.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Senha" >
+      <input matInput placeholder="Nome de usuário" formControlName="username" >
+      <mat-error *ngIf="!formGroup.controls['username'].valid">Você deve informar um nome de usuário.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" type="password" formControlName="password" >
+      <mat-error *ngIf="!formGroup.controls['password'].valid">Você deve informar uma senha.</mat-error>
     </mat-form-field><br>
     <button mat-raised-button color="primary" type="submit">Cadastrar</button>
   </form>
