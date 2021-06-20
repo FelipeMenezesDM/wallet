@@ -18,19 +18,27 @@ export class ListPaymentsComponent implements OnInit {
     this.currentUser = this.user.getInfo();
 
     this.authRequestService.get({
+      fields: "payee, payer, value, PAYEE.fullname AS payeeName, PAYER.fullname AS payerName, paymentcreation",
+      order_by: "paymentcreation DESC",
       joins: JSON.stringify([{
-        table: "person",
+        table: {name: "person", alias: "PAYEE"},
         meta_query: [{
-          key: "payee",
-          column: "person_id"
+          key: "PAYEE.personId",
+          column: "payee"
+        }]
+      }, {
+        table: {name: "person", alias: "PAYER"},
+        meta_query: [{
+          key: "PAYER.personId",
+          column: "payer"
         }]
       }]),
       meta_query: JSON.stringify([{
         key: "payer",
-        value: this.currentUser.person_id
+        value: this.currentUser.personid
       }, {
         key: "payee",
-        value: this.currentUser.person_id,
+        value: this.currentUser.personid,
         relation: "OR"
       }])
     }, "payment" ).subscribe(result => {
@@ -38,6 +46,10 @@ export class ListPaymentsComponent implements OnInit {
         this.data = result.results;
       }
     });
+  }
+
+  getName( currentId, id, name ) {
+    return ( currentId === id ? "Você" : name );
   }
 
   ngOnInit(): void {

@@ -30,14 +30,14 @@ export class PaymentComponent implements OnInit {
     this.title = data.title;
     this.name = data.name;
     this.userInfo = user.getInfo();
-    this.formGroup.get('payee')!.setValue(data.id);
-    this.formGroup.get('payer')?.setValue(this.userInfo.person_id);
+    this.formGroup.get('payee')!.setValue(data.payeeid);
+    this.formGroup.get('payer')?.setValue(this.userInfo.personid);
 
     this.authRequestService.get({
       fields: ["balance"],
       meta_query: JSON.stringify([{
-        key: "wallet_person_id",
-        value: this.userInfo.person_id
+        key: "walletPersonId",
+        value: this.userInfo.personid
       }])
     }, "wallet").subscribe(result => {
       if(result.status === "success") {

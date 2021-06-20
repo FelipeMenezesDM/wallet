@@ -17,8 +17,8 @@ export class AuthRequestService {
     data = JSON.parse(JSON.stringify(data));
 
     if(this.user.isLoggedIn()) {
-      data.user_id = this.user.getInfo().user_id;
-      data.person_id = this.user.getInfo().person_id;
+      data.userid = this.user.getInfo().userid;
+      data.personid = this.user.getInfo().personid;
     }
 
     data.client_id = clientId;
@@ -32,8 +32,8 @@ export class AuthRequestService {
     data = JSON.parse(JSON.stringify(data));
 
     if(this.user.isLoggedIn()) {
-      data.user_id = this.user.getInfo().user_id;
-      data.person_id = this.user.getInfo().person_id;
+      data.userid = this.user.getInfo().userid;
+      data.personid = this.user.getInfo().personid;
     }
 
     data.client_id = clientId;
