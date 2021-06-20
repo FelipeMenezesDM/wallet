@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { UserService } from 'src/app/services/user.service';
 import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({
@@ -13,8 +15,14 @@ export class ListPayeeComponent implements OnInit {
 
   constructor(
     private authRequestService: AuthRequestService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private router: Router,
+    private user: UserService
   ) { 
+    if(!this.user.isLoggedIn()) {
+      this.router.navigate(['/user']);
+    }
+
     this.authRequestService.executeService({}, "POST", "payee", "getPayees").subscribe(result => {
       if(result.status === "success") {
         this.data = result.results;
@@ -27,5 +35,9 @@ export class ListPayeeComponent implements OnInit {
 
   pay( person_id, fullname ) {
     this.modalService.open(PaymentComponent, {title: `Novo pagamento para ${fullname}`, id: person_id});
+  }
+
+  goToDashboard() {
+    this.router.navigate(['/']);
   }
 }

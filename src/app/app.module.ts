@@ -25,6 +25,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { ListPayeeComponent } from './components/listas/list-payee/list-payee.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ListPaymentsComponent } from './components/listas/list-payments/list-payments.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PaymentComponent } from './components/payment/payment.component';
     ModalComponent,
     DashboardComponent,
     ListPayeeComponent,
-    PaymentComponent
+    PaymentComponent,
+    ListPaymentsComponent
   ],
   imports: [
     BrowserModule,
