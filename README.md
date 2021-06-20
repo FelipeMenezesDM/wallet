@@ -1,27 +1,41 @@
 # Wallet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
+Projeto desenvolvido em Angular Material 12.04. Uma aplicação simples de simulação de transferências financeiras.
 
-## Development server
+# Pré-requisitos
+Para utilizar este projeto, é necessário ter instalado em sua máquina:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Node 14.17
+- Angular Material 12.04
 
-## Code scaffolding
+# Instalação
+A instalação desta aplicação é feita de forma automatizada, juntamente com o backend, usando o Docker. Porém, caso queira instalar manualmente, deve-se seguir as seguintes etapas:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Faça o clone deste projeto usando o comando abaixo:
+```bash
+git clone https://github.com/FelipeMenezesDM/wallet.git
+```
+2. Acesse a pasta `/src/environments/` e crie um arquivo com o nome `init.js`. Neste arquivo deverá as constantes com as chaves de autenticação da OKTA, usada pelo backend para autenticar as requisições.
+1. Copie o contéudo do arquivo init.example.js para o init.js, informando as chaves de autenticação.
+1. Execute o `npm install`.
+1. Inicie o servidor `ng serve --open`.
+1. Siga o passo à passo para a instalação do backend neste link.
 
-## Build
+# Ambiente de testes
+O ambiente de testes está disponpivel no endereço https://wallet.felipemenezes.com.br/.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para acesso à aplicação, usar uma das credenciais abaixo:
 
-## Running unit tests
+| Usuário | Senha | Tipo
+|--|--|--|
+| usuario1 | teste123 | F |
+| usuario3 | teste123 | F |
+| usuario6 | teste123 | J |
+| usuario8 | teste123 | F |
+| usuario4 | teste123 | J |
+| usuario7 | teste123 | F |
+| usuario2 | teste123 | J |
+| usuario9 | teste123 | F |
+| usuario10 | teste123 | F |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Lembrando que, por conta da regra de negócio da aplicação, usuários do tipo "J", não podem realizar pagamentos, apenas recebê-los.

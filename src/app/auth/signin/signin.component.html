@@ -1,0 +1,13 @@
+<div class="user-form-wrapper">
+  <form [formGroup]="formGroup" (ngSubmit)="signin()">
+    <mat-form-field>
+      <input matInput placeholder="E-mail ou nome de usuário" formControlName="email" >
+      <mat-error *ngIf="!formGroup.controls['email'].valid">Informe um endereço de e-mail ou nome de usuário válido.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Senha" type="password" formControlName="password" >
+      <mat-error *ngIf="!formGroup.controls['password'].valid">Informe sua senha.</mat-error>
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+<div class="user-card-wrapper" fxLayoutAlign="center top">
+    <mat-card class="user-page-card">
+      <div fxFlexFill fxLayout="column">
+        <h3 style="margin-top: 0;">Selecione um usuário:</h3>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option *ngFor="let item of data" [value]="item.personid" (click)="pay(item.personid, item.fullname)">
+            {{item.fullname}}
+          </mat-list-option>
+        </mat-selection-list><br><br>
+        <button mat-raised-button (click)="goToDashboard()">Cancelar</button>
+      </div>
+    </mat-card>
+</div>
