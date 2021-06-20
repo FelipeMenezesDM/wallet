@@ -26,8 +26,8 @@ export class DashboardComponent implements OnInit {
     this.authRequestService.get({
       fields: ["balance"],
       meta_query: JSON.stringify([{
-        key: "wallet_person_id",
-        value: this.user.person_id
+        key: "walletPersonId",
+        value: this.user.personid
       }])
     }, "wallet").subscribe(result => {
       if(result.status === "success") {

@@ -33,8 +33,8 @@ export class ListPayeeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  pay( person_id, fullname ) {
-    this.modalService.open(PaymentComponent, {title: `Novo pagamento para ${fullname}`, id: person_id});
+  pay( personid, fullname ) {
+    this.modalService.open(PaymentComponent, {title: `Novo pagamento para ${fullname}`, payeeid: personid});
   }
 
   goToDashboard() {

@@ -3,7 +3,7 @@
       <div fxFlexFill fxLayout="column">
         <h3 style="margin-top: 0;">Selecione um usuário:</h3>
         <mat-selection-list [multiple]="false">
-          <mat-list-option *ngFor="let item of data" [value]="item.person_id" (click)="pay(item.person_id, item.fullname)">
+          <mat-list-option *ngFor="let item of data" [value]="item.personid" (click)="pay(item.personid, item.fullname)">
             {{item.fullname}}
           </mat-list-option>
         </mat-selection-list><br><br>
