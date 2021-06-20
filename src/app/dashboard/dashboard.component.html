@@ -1,14 +1,21 @@
-<div fxLayoutAlign="center top">
-  <mat-card fxFlex="22" class="user-page-card" fxFlexFill fxLayout="column">
-    <div align="center">
-      <div class="dash-title">
-        <h2>{{ user.fullname }}</h2>
-        <h4>{{ user.type == 'J' ? 'Logista' : 'Padrão' }}</h4>
-      </div>
-      <button mat-mini-fab color="primary" style="width : 6em;height: 6em;" (click)="btnClick()">Transferir</button>
+<div class="user-card-wrapper" fxLayoutAlign="center top">
+  <mat-card class="user-page-card">
+    <div align="end">
+      <h4 style="float: left; margin: 11px; font-size: 14px; font-family: Roboto, 'Helvetica Neue', sans-serif;">Saldo: R$ {{saldo}}</h4>
+      <button style="float: right;" mat-button (click)="logout()">Sair</button>
     </div>
-    <div align="center">
-      <h5>Últimas transações</h5>
+    <div fxFlexFill fxLayout="column">
+      <div align="center">
+        <div class="dash-title">
+          <h2>{{ user.fullname }}</h2>
+          <h4>{{ user.type == 'J' ? 'Logista' : 'Padrão' }}</h4>
+        </div>
+        <button mat-mini-fab color="primary" style="width : 6em;height: 6em;" (click)="btnClick()">Pagar</button>
+      </div>
+      <div align="center">
+        <h5 style="margin: 35px 0 0 0;border-bottom: 1px solid #DDD;padding-bottom: 5px;">Últimas transações</h5>
+      </div>
+      <app-list-payments></app-list-payments>
     </div>
   </mat-card>
 <div>

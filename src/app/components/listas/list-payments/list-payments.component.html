@@ -1,0 +1,6 @@
+<div class="payments-list">
+    <mat-card *ngFor="let item of data" class="{{ item.payer === currentUser.person_id ? 'current' : '' }}">
+      <h4>{{ item.payer === currentUser.person_id ? 'Você' : item.fullname }} pagou R$ {{ item.value | mask: '999.999.990,00' }} para {{ item.payee === currentUser.person_id ? 'Você' : item.fullname }}</h4>
+      <h6>{{ item.payment_creation | date:'short' }}</h6>
+    </mat-card>
+</div>

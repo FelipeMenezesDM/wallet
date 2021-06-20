@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { PreloaderService } from 'src/app/services/preloader.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { DialogService } from 'src/app/services/dialog.service';
@@ -17,6 +16,7 @@ export class PaymentComponent implements OnInit {
   title: string;
   name: string;
   saldoAtual: string = "-";
+  userInfo: any;
 
   constructor(
     private fb: FormBuilder,
@@ -29,12 +29,19 @@ export class PaymentComponent implements OnInit {
   ) { 
     this.title = data.title;
     this.name = data.name;
+    this.userInfo = user.getInfo();
     this.formGroup.get('payee')!.setValue(data.id);
-    this.formGroup.get('payer')?.setValue(user.getInfo().person_id);
+    this.formGroup.get('payer')?.setValue(this.userInfo.person_id);
 
-    this.authRequestService.executeService({}, "POST", "payer", "get").subscribe(result => {
+    this.authRequestService.get({
+      fields: ["balance"],
+      meta_query: JSON.stringify([{
+        key: "wallet_person_id",
+        value: this.userInfo.person_id
+      }])
+    }, "wallet").subscribe(result => {
       if(result.status === "success") {
-        this.saldoAtual = result.results.saldoAtualComMascara;
+        this.saldoAtual = result.results[0].balance;
       }
     });
   }

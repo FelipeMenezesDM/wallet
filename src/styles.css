@@ -12,6 +12,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	padding: 40px;
 }
 
+mat-card.auth-page-card {
+  padding: 0;
+}
+
+.user-page-card {
+  width: 400px;
+  height: 100%;
+}
+
 .user-form-wrapper mat-form-field {
 	display: block;
+}
+
+.payments-list mat-card {
+  margin:20px 10px;
+  background-color: #20308b;
+  color: #fff;
+}
+
+.payments-list mat-card.current {
+  background-color: #3f51b5;
+}
+
+.user-card-wrapper {
+  padding-top: 20px;
 }

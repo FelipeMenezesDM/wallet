@@ -1,16 +1,18 @@
-<div fxLayoutAlign="center top">
-    <mat-card fxFlex="22" class="user-page-card">
-      <mat-tab-group dynamicHeight mat-stretch-tabs>
-        <mat-tab label="Login">
-          <ng-template matTabContent>
-            <app-signin></app-signin>
-          </ng-template>
-        </mat-tab>
-        <mat-tab label="Cadastro">
-          <ng-template matTabContent>
-            <app-signup></app-signup>
-          </ng-template>
-        </mat-tab>
-      </mat-tab-group>
+<div class="user-card-wrapper" fxLayoutAlign="center top">
+    <mat-card class="user-page-card auth-page-card">
+      <div fxFlexFill fxLayout="column">
+        <mat-tab-group dynamicHeight mat-stretch-tabs>
+          <mat-tab label="Login">
+            <ng-template matTabContent>
+              <app-signin></app-signin>
+            </ng-template>
+          </mat-tab>
+          <mat-tab label="Cadastro">
+            <ng-template matTabContent>
+              <app-signup></app-signup>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
     </mat-card>
 </div>
