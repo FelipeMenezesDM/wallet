@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { baseUrl, clientId, clientSecret } from 'src/environments/init';
+import { clientId, clientSecret } from 'src/environments/init';
 import { UserService } from './user.service';
+import { baseUrl } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
