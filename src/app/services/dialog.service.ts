@@ -18,6 +18,6 @@ export class DialogService {
       message: setts.message
     };
 
-    this.dialog.open(DialogComponent, dialogConfig);
+    return this.dialog.open(DialogComponent, dialogConfig);
   }
 }
