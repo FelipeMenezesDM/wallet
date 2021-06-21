@@ -45,7 +45,12 @@ export class SignupComponent implements OnInit {
               message: result.message
             });
           }else{
-            this.router.navigate(['/']);
+            this.dialog.open({
+              title: "Sucesso",
+              message: "Usuário cadastro com sucesso, com bônus inicial de R$ 20,00."
+            }).afterClosed().subscribe(() => {
+              this.router.navigate(['/']);
+            });
           }
         },
         error => {
