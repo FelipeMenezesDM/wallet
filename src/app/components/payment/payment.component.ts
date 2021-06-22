@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 export class PaymentComponent implements OnInit {
   title: string;
   name: string;
-  saldoAtual: string = "-";
+  saldoAtual: string = '-';
   userInfo: any;
 
   constructor(
@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit {
     private dialog: DialogService,
     private user: UserService,
     @Inject(MAT_DIALOG_DATA) data
-  ) { 
+  ) {
     this.title = data.title;
     this.name = data.name;
     this.userInfo = user.getInfo();
@@ -41,7 +41,7 @@ export class PaymentComponent implements OnInit {
       }])
     }, "wallet").subscribe(result => {
       if(result.status === "success") {
-        this.saldoAtual = result.results[0].balance;
+        this.saldoAtual = parseFloat(result.results[0].balance).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
       }
     });
   }

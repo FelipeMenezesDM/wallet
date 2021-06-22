@@ -1,11 +1,12 @@
-<h3>{{ title }}</h3>
+<h3 style="margin: 0 0 30px 0;">{{ title }}</h3>
 <form [formGroup]="formGroup" (ngSubmit)="confirmPay()">
     <mat-form-field>
-        <input matInput formControlName="value" placeholder="Informe o valor" autocomplete="off" mask="separator.2" thousandSeparator="." decimalMarker="," >
+        <input currencyMask matInput formControlName="value" placeholder="Informe o valor"
+               autocomplete="off" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" >
     </mat-form-field><br><br>
     <div>
         <span>Seu saldo atual é:</span>
-        <h2>R$ {{saldoAtual | mask: 'separator.2' }}</h2>
+        <h2 style="margin-top: 0;">{{ saldoAtual }}</h2>
     </div>
     <mat-dialog-actions align="end">
         <button mat-raised-button mat-dialog-close>Cancelar</button>

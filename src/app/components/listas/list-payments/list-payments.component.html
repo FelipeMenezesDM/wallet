@@ -1,7 +1,11 @@
 <div class="payments-list">
+    <div *ngIf="isLoading" style="margin-top: 20px;" align="center">
+      <mat-spinner></mat-spinner>
+    </div>
     <mat-card *ngFor="let item of data" class="{{ item.payer === currentUser.personid ? 'current' : '' }}">
       <h4>{{ getName(item.payer, currentUser.personid, item.payername) }}
-        pagou R$ {{ item.value | mask: '999.999.990,00' }} para {{ getName(item.payee, currentUser.personid, item.payeename) }}</h4>
+        pagou {{ getCurrency(item.value) }} para {{ getName(item.payee, currentUser.personid, item.payeename) }}</h4>
       <h6>{{ item.paymentcreation | date:'short' }}</h6>
     </mat-card>
 </div>
+<div *ngIf="data && data.length === 0">Você ainda não fez ou recebeu pagamentos.</div>

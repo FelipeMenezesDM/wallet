@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ListPaymentsComponent implements OnInit {
   data: any;
   currentUser: any;
+  isLoading: boolean = true;
 
   constructor(
     private authRequestService: AuthRequestService,
@@ -42,6 +43,7 @@ export class ListPaymentsComponent implements OnInit {
         relation: "OR"
       }])
     }, "payment" ).subscribe(result => {
+      this.isLoading = false;
       if(result.status === "success") {
         this.data = result.results;
       }
@@ -50,6 +52,10 @@ export class ListPaymentsComponent implements OnInit {
 
   getName( currentId, id, name ) {
     return ( currentId === id ? "Você" : name );
+  }
+
+  getCurrency( valor ) {
+    return parseFloat(valor).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
   }
 
   ngOnInit(): void {

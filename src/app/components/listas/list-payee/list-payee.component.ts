@@ -12,18 +12,20 @@ import { PaymentComponent } from '../../payment/payment.component';
 })
 export class ListPayeeComponent implements OnInit {
   data: any;
+  isLoading: boolean = true;
 
   constructor(
     private authRequestService: AuthRequestService,
     private modalService: ModalService,
     private router: Router,
     private user: UserService
-  ) { 
+  ) {
     if(!this.user.isLoggedIn()) {
       this.router.navigate(['/user']);
     }
 
     this.authRequestService.executeService({}, "POST", "payee", "getPayees").subscribe(result => {
+      this.isLoading = false;
       if(result.status === "success") {
         this.data = result.results;
       }

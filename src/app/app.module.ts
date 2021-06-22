@@ -14,14 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NgxMaskModule } from  'ngx-mask';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
 import { ListPayeeComponent } from './components/listas/list-payee/list-payee.component';
 import { PaymentComponent } from './components/payment/payment.component';
@@ -51,12 +50,11 @@ import { ListPaymentsComponent } from './components/listas/list-payments/list-pa
     MatButtonModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    NgxMaskModule.forRoot(),
+    CurrencyMaskModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     OverlayModule,
-    MatAutocompleteModule,
     MatListModule
   ],
   providers: [],
