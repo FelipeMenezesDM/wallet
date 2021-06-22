@@ -2,9 +2,13 @@
     <mat-card class="user-page-card">
       <div fxFlexFill fxLayout="column">
         <h3 style="margin-top: 0;">Selecione um usuário:</h3>
+        <div *ngIf="isLoading" style="margin-top: 20px;" align="center">
+          <mat-spinner></mat-spinner>
+        </div>
         <mat-selection-list [multiple]="false">
           <mat-list-option *ngFor="let item of data" [value]="item.personid" (click)="pay(item.personid, item.fullname)">
-            {{item.fullname}}
+            {{item.fullname}}<br>
+            <span style="color: #999; font-size: 12px;">@{{item.username}} / {{item.type == 'J' ? 'Lojista' : 'Padrão' }}</span>
           </mat-list-option>
         </mat-selection-list><br><br>
         <button mat-raised-button (click)="goToDashboard()">Cancelar</button>

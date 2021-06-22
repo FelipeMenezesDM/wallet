@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class DashboardComponent implements OnInit {
   user: any;
-  saldo: any;
+  saldo: string = '-';
 
   constructor(
     private router: Router,
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
       }])
     }, "wallet").subscribe(result => {
       if(result.status === "success") {
-        this.saldo = result.results[0].balance;
+        this.saldo = parseFloat(result.results[0].balance).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
       }
     });
   }
