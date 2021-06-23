@@ -26,6 +26,7 @@ import { ListPayeeComponent } from './components/listas/list-payee/list-payee.co
 import { PaymentComponent } from './components/payment/payment.component';
 import { ListPaymentsComponent } from './components/listas/list-payments/list-payments.component';
 import { AuthPaymentComponent } from './components/payment/auth-payment/auth-payment.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AuthPaymentComponent } from './components/payment/auth-payment/auth-pay
     FormsModule,
     ReactiveFormsModule,
     OverlayModule,
-    MatListModule
+    MatListModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   exports: [DialogComponent, ModalComponent],
