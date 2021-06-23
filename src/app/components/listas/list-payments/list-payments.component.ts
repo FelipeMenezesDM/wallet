@@ -58,6 +58,11 @@ export class ListPaymentsComponent implements OnInit {
     return parseFloat(valor).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
   }
 
+  getDate(valor) {
+    var d = new Date(valor);
+    return d.toLocaleString();
+  }
+
   ngOnInit(): void {
   }
 

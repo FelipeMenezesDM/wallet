@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ModalComponent implements OnInit {
   title: string;
 
-  constructor(private dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) data) { 
+  constructor(public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.title = data.title;
   }
 
@@ -21,16 +21,17 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close(value);
   }
 
-  public cancel() {
+  public cancel() : void {
     this.close(false);
   }
-  
-  public confirm() {
+
+  public confirm() : void {
     this.close(true);
   }
-  
-  @HostListener("keydown.esc") 
-  public onEsc() {
+
+  @HostListener("keydown.esc")
+  public onEsc() : void {
+    console.log("testeetst");
     this.close(false);
   }
 }

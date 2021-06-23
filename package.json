@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.js",
-    "build": "ng build",
+    "build": "ng build --base-href=/wallet/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -23,6 +23,7 @@
     "@angular/router": "~12.0.4",
     "@auth0/angular-jwt": "^5.0.2",
     "ng2-currency-mask": "^11.0.0",
+    "ngx-mask": "^12.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

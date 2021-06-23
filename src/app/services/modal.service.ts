@@ -10,9 +10,9 @@ export class ModalService {
   open(component, setts) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '360px';
+    dialogConfig.width = ( setts.width ? setts.width : '360px' );
     dialogConfig.data = setts;
 
-    this.dialog.open(component, dialogConfig);
+    return this.dialog.open(component, dialogConfig);
   }
 }

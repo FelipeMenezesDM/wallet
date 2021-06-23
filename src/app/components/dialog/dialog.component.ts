@@ -25,12 +25,12 @@ export class DialogComponent implements OnInit {
   public cancel() {
     this.close(false);
   }
-  
+
   public confirm() {
     this.close(true);
   }
-  
-  @HostListener("keydown.esc") 
+
+  @HostListener("keydown.esc")
   public onEsc() {
     this.close(false);
   }

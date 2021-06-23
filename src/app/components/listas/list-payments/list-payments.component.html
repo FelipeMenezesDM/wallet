@@ -3,9 +3,9 @@
       <mat-spinner></mat-spinner>
     </div>
     <mat-card *ngFor="let item of data" class="{{ item.payer === currentUser.personid ? 'current' : '' }}">
-      <h4>{{ getName(item.payer, currentUser.personid, item.payername) }}
+      <h4 style="margin-bottom: 5px;">{{ getName(item.payer, currentUser.personid, item.payername) }}
         pagou {{ getCurrency(item.value) }} para {{ getName(item.payee, currentUser.personid, item.payeename) }}</h4>
-      <h6>{{ item.paymentcreation | date:'short' }}</h6>
+      <h6 style="margin: 0;">{{ getDate(item.paymentcreation) }}</h6>
     </mat-card>
 </div>
 <div *ngIf="data && data.length === 0">Você ainda não fez ou recebeu pagamentos.</div>
