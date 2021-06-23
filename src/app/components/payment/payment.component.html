@@ -2,8 +2,9 @@
 <form [formGroup]="formGroup" (ngSubmit)="confirmPay()">
     <mat-form-field>
         <input currencyMask matInput formControlName="value" placeholder="Informe o valor"
-               autocomplete="off" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" >
-    </mat-form-field><br><br>
+               autocomplete="off" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [max]="99999.99" >
+        <mat-error *ngIf="!formGroup.controls['value'].valid">Informe um valor válido.</mat-error>
+    </mat-form-field><br>
     <div>
         <span>Seu saldo atual é:</span>
         <h2 style="margin-top: 0;">{{ saldoAtual }}</h2>

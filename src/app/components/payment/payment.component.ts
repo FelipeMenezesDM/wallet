@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthRequestService } from 'src/app/services/auth.request.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { UserService } from 'src/app/services/user.service';
+import { ModalService } from 'src/app/services/modal.service';
+import { AuthPaymentComponent } from './auth-payment/auth-payment.component';
 
 @Component({
   selector: 'app-payment',
@@ -24,12 +26,13 @@ export class PaymentComponent implements OnInit {
     private preloader: PreloaderService,
     private authRequestService: AuthRequestService,
     private dialog: DialogService,
+    private modal: ModalService,
     private user: UserService,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.title = data.title;
     this.name = data.name;
-    this.userInfo = user.getInfo();
+    this.userInfo = this.user.getInfo();
     this.formGroup.get('payee')!.setValue(data.payeeid);
     this.formGroup.get('payer')?.setValue(this.userInfo.personid);
 
@@ -44,21 +47,11 @@ export class PaymentComponent implements OnInit {
         this.saldoAtual = parseFloat(result.results[0].balance).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
       }
     });
-  }
 
-  ngOnInit(): void {
-  }
+    this.dialogRef.afterClosed().subscribe((res) => {
+      if(!res)
+        return;
 
-  formGroup: FormGroup = this.fb.group({
-    value: ['', [Validators.required]],
-    payee: [''],
-    payer: ['']
-  })
-
-  confirmPay() {
-    if(this.formGroup.valid) {
-      this.dialogRef.close();
-      this.preloader.$spin.next(true);
       this.authRequestService.executeService(this.formGroup.value, "POST", "payment", "validatePayment").subscribe(result => {
         let title = "Erro";
 
@@ -78,6 +71,25 @@ export class PaymentComponent implements OnInit {
           title: "Erro",
           message: "Não foi possível finalizar a transação por conta de uma falha no sistema."
         });
+      });
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
+  formGroup: FormGroup = this.fb.group({
+    value: ['', [Validators.required, Validators.min(0.01)]],
+    payee: [''],
+    payer: ['']
+  });
+
+  confirmPay() {
+    if(this.formGroup.valid) {
+      this.modal.open(AuthPaymentComponent, {
+        width: "280px",
+        email: this.userInfo.email,
+        payDiag: this.dialogRef
       });
     }
   }
